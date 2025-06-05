@@ -1,0 +1,18 @@
+[
+  {
+    "nombre": "Tortilla de Patatas",
+    "ingredientes": ["patatas", "huevos", "cebolla", "aceite", "sal"]
+  },
+  {
+    "nombre": "Ensalada César",
+    "ingredientes": ["lechuga", "pollo", "pan tostado", "queso parmesano", "salsa césar"]
+  },
+  {
+    "nombre": "Pasta Carbonara",
+    "ingredientes": ["pasta", "huevos", "guanciale", "queso pecorino", "pimienta negra"]
+  },
+  {
+    "nombre": "Gazpacho",
+    "ingredientes": ["tomate", "pepino", "pimiento", "ajo", "aceite de oliva", "vinagre", "pan"]
+  }
+]
