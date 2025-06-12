@@ -1,10 +1,11 @@
 #include <iostream>
 #include <fstream>    // Para std::ifstream
 #include <string>
+#include "windows.h"
 
 #include "pantry.h"
 #include "UI/menu.h"
-#include "json.hpp"
+#include "externalLibraries/json.hpp"
 
 // Alias para el tipo JSON para facilitar su uso
 using json = nlohmann::json;
@@ -28,6 +29,8 @@ json cargarRecetas(const std::string& nombre_archivo) {
 }
 
 int main() {
+    //SetConsoleOutputCP(1252);
+    SetConsoleOutputCP(CP_UTF8);
     Pantry miPantry;
     const json recetas = cargarRecetas("recetas.json");
 

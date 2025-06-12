@@ -65,7 +65,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 add_executable(unit20 main.cpp UI/menu.cpp pantry.cpp)
 
 configure_file(
-        ${CMAKE_CURRENT_SOURCE_DIR}/recetas.json
+        data/recetas.json
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/recetas.json
         COPYONLY
 )

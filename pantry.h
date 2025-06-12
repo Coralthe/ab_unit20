@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include <algorithm>
+#include <algorithm> // Para std::transform
 #include <iostream>
 
 class Pantry {

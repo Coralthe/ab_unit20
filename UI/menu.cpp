@@ -10,13 +10,13 @@ void limpiarBufferEntrada() {
 }
 
 void mostrarMenuPrincipal() {
-    std::cout << "\n===== Menú Principal =====" << std::endl;
-    std::cout << "1. Introducir ingredientes" << std::endl;
-    std::cout << "2. Ver inventario" << std::endl;
-    std::cout << "3. Eliminar ingrediente del inventario" << std::endl;
-    std::cout << "4. Buscar recetas posibles" << std::endl;
-    std::cout << "5. Salir" << std::endl;
-    std::cout << "Seleccione una opción: ";
+    std::cout << "\n===== Menú Principal =====\n"
+    << "2. Ver inventario\n"
+    << "1. Introducir ingredientes\n"
+    << "3. Eliminar ingrediente del inventario\n"
+    << "4. Buscar recetas posibles\n"
+    << "5. Salir\n"
+    << "Seleccione una opción: " << std::endl;
 }
 
 std::vector<std::string> parsearIngredientesComando(const std::string& linea_comando) {
@@ -105,7 +105,7 @@ void opcionBuscarRecetas(const Pantry& pantry, const json& recetas) {
             std::cout << "-> " << nombre_receta << std::endl;
             alguna_receta_posible = true;
         } else {
-            // Opcional: Mostrar qué falta para otras recetas
+            // TODO: Mostrar qué falta para otras recetas
             // std::cout << "Para " << nombre_receta << " te faltan: ";
             // for(size_t i = 0; i < ingredientes_faltantes.size(); ++i) {
             //     std::cout << ingredientes_faltantes[i] << (i == ingredientes_faltantes.size() - 1 ? "" : ", ");
