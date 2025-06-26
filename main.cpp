@@ -42,27 +42,18 @@ int main() {
 
         switch (opcion) {
             case 1:
-                opcionAgregarIngrediente(miPantry);
+                opcionMenuIngredientes(miPantry);
                 break;
             case 2:
-                opcionVerInventario(miPantry);
+                opcionMenuRecetas(miPantry, recetas, nombre_archivo);
                 break;
             case 3:
-                opcionEliminarIngrediente(miPantry);
-                break;
-            case 4:
-                opcionBuscarRecetas(miPantry, recetas);
-                break;
-            case 5:
-                opcionAgregarRecetas(recetas, nombre_archivo);
-                break;
-            case 6:
                 std::cout << "¡Hasta luego! Gracias por usar el recomendador de comidas." << std::endl;
                 break;
             default:
-                std::cout << "Opción no válida. Inténtalo de nuevo." << std::endl;
+                 std::cout << "\n" << std::endl;
         }
-    } while (opcion != 6);
+    } while (opcion != 3);
 
     return 0;
 }

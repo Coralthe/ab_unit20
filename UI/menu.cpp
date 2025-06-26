@@ -2,11 +2,25 @@
 
 void mostrarMenuPrincipal() {
     std::cout << "\n===== Menú Principal =====\n"
-    << "1. Introducir ingredientes\n"
-    << "2. Ver inventario\n"
-    << "3. Eliminar ingrediente del inventario\n"
-    << "4. Buscar recetas posibles\n"
-    << "5. Agregar recetas personalizadas\n"
-    << "6. Salir\n"
+    << "1. Menú ingredientes\n"
+    << "2. Menú Recetas\n"
+    << "3. Salir\n"
     << "Seleccione una opción: " << std::endl;
+}
+
+void mostrarMenuIngredientes() {
+    std::cout << "\n===== Menú Ingredientes =====\n"
+<< "1. Introducir ingredientes\n"
+<< "2. Ver inventario\n"
+<< "3. Eliminar ingrediente del inventario\n"
+<< "4. Volver al menú principal\n"
+<< "Seleccione una opción: " << std::endl;
+}
+
+void mostrarMenuRecetas() {
+    std::cout << "\n===== Menú Recetas =====\n"
+<< "1. Buscar recetas posibles\n"
+<< "2. Agregar recetas personalizadas\n"
+<< "3. Salir\n"
+<< "Seleccione una opción: " << std::endl;
 }

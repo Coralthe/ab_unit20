@@ -1,11 +1,73 @@
 #include "menuHandler.h"
 #include "dataHandler.h"
 #include "userInputHandler.h"
+#include "../UI/menu.h"
 #include <iostream>
 #include <algorithm> // Para std::transform
 
 
+void opcionMenuIngredientes(Pantry& miPantry) {
+    int opcion;
+    do {
+        mostrarMenuIngredientes();
+        std::cin >> opcion;
 
+        if (std::cin.fail()) {
+            std::cout << "Entrada no válida. Por favor, introduce un número." << std::endl;
+            std::cin.clear(); // Limpiar flags de error
+            opcion = 0; // Asignar un valor no válido para continuar el bucle
+            continue;
+        }
+
+        switch (opcion) {
+            case 1:
+                opcionAgregarIngrediente(miPantry);
+                break;
+            case 2:
+                opcionVerInventario(miPantry);
+                break;
+            case 3:
+                opcionEliminarIngrediente(miPantry);
+                break;
+            case 4:
+                std::cout << "Volviendo al menú principal" << std::endl;
+                break;
+            default:
+                std::cout << "Opción no válida. Inténtalo de nuevo." << std::endl;
+        }
+
+    } while (opcion != 4);
+}
+
+void opcionMenuRecetas(Pantry& miPantry, json& recetas, const std::string& nombre_archivo) {
+    int opcion;
+    do {
+        mostrarMenuRecetas();
+        std::cin >> opcion;
+
+        if (std::cin.fail()) {
+            std::cout << "Entrada no válida. Por favor, introduce un número." << std::endl;
+            std::cin.clear(); // Limpiar flags de error
+            opcion = 0; // Asignar un valor no válido para continuar el bucle
+            continue;
+        }
+
+        switch (opcion) {
+            case 1:
+                opcionBuscarRecetas(miPantry, recetas);
+                break;
+            case 2:
+                opcionAgregarRecetas(recetas, nombre_archivo);
+                break;
+            case 3:
+                std::cout << "Volviendo al menú principal" << std::endl;
+                break;
+            default:
+                std::cout << "Opción no válida. Inténtalo de nuevo." << std::endl;
+        }
+
+    } while (opcion != 3);
+}
 
 void opcionAgregarIngrediente(Pantry& pantry) {
     const std::string linea_ingredientes = pedirListaIngredientes();
@@ -80,7 +142,7 @@ void opcionBuscarRecetas(const Pantry& pantry, json& recetas) {
     std::cout << "---------------------------------" << std::endl;
 }
 
-void opcionAgregarRecetas(json &recetas, std::string& nombre_archivo) {
+void opcionAgregarRecetas(json &recetas, const std::string& nombre_archivo) {
     // if (0 == 0) {
     //     std::cout << "Lo sentimos, esta funcionalidad estará disponible en una siguiente actualización" << std::endl;
     //     return;

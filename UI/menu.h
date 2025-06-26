@@ -5,5 +5,7 @@
 
 
 void mostrarMenuPrincipal();
+void mostrarMenuIngredientes();
+void mostrarMenuRecetas();
 
 #endif
