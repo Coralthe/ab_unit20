@@ -1,21 +1,14 @@
-#include <variant>
 #include "menuHandler.h"
 #include "dataHandler.h"
+#include "userInputHandler.h"
 #include <iostream>
 #include <algorithm> // Para std::transform
-#include <map>
 
 
 
 
 void opcionAgregarIngrediente(Pantry& pantry) {
-    std::string linea_ingredientes;
-    std::cout << "Introduce los ingredientes que tienes, separados por comas (ej: tomates, cebolla, ajo):" << std::endl;
-    // Consumir el newline pendiente del menú anterior si es necesario
-    if (std::cin.peek() == '\n') {
-        std::cin.ignore();
-    }
-    std::getline(std::cin, linea_ingredientes);
+    const std::string linea_ingredientes = pedirListaIngredientes();
 
     const std::vector<std::string> ingredientes = parsearIngredientesComando(linea_ingredientes);
     if (ingredientes.empty() && !linea_ingredientes.empty()){
@@ -34,17 +27,12 @@ void opcionVerInventario(const Pantry& pantry) {
 }
 
 void opcionEliminarIngrediente(Pantry& pantry) {
-    std::string ingrediente_a_eliminar;
     pantry.mostrarInventario();
     if (pantry.obtenerIngredientes().empty()){
         return; // No hacer nada si el inventario está vacío
     }
-    std::cout << "Introduce el nombre exacto del ingrediente a eliminar: ";
-    // Consumir el newline pendiente del menú anterior si es necesario
-    if (std::cin.peek() == '\n') {
-        std::cin.ignore();
-    }
-    std::getline(std::cin, ingrediente_a_eliminar);
+    const std::string ingrediente_a_eliminar = pedirUnicoIngrediente();
+
     pantry.eliminarIngrediente(ingrediente_a_eliminar);
 }
 
@@ -93,10 +81,10 @@ void opcionBuscarRecetas(const Pantry& pantry, json& recetas) {
 }
 
 void opcionAgregarRecetas(json &recetas, std::string& nombre_archivo) {
-    if (0 == 0) {
-        std::cout << "Lo sentimos, esta funcionalidad estará disponible en una siguiente actualización" << std::endl;
-        return;
-    }
+    // if (0 == 0) {
+    //     std::cout << "Lo sentimos, esta funcionalidad estará disponible en una siguiente actualización" << std::endl;
+    //     return;
+    // }
 
     //Inicializamos las variables necesarias
     std::string nombre_receta;

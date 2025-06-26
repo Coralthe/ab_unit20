@@ -24,7 +24,7 @@ int main() {
         std::cerr << "No se pudieron cargar las recetas o el formato es incorrecto. El programa terminará." << std::endl;
         return 1;
     }
-    std::cout << recetas.dump(4) << std::endl;
+    // std::cout << recetas.dump(4) << std::endl;
 
 
     int opcion;

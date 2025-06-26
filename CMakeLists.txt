@@ -67,7 +67,8 @@ add_executable(unit20
         UI/menu.cpp
         classes/pantry.cpp
         handlers/menuHandler.cpp
-        handlers/dataHandler.cpp)
+        handlers/dataHandler.cpp
+        handlers/userInputHandler.cpp)
 
 configure_file(
         data/recetas.json
