@@ -5,6 +5,7 @@
 
 #include "pantry.h"
 #include "UI/menu.h"
+#include "handlers/menuHandler.h"
 #include "externalLibraries/json.hpp"
 
 // Alias para el tipo JSON para facilitar su uso
