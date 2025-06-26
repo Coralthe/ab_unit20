@@ -21,6 +21,7 @@ void mostrarMenuRecetas() {
     std::cout << "\n===== Menú Recetas =====\n"
 << "1. Buscar recetas posibles\n"
 << "2. Agregar recetas personalizadas\n"
-<< "3. Salir\n"
+<< "3. Ver todas las recetas\n"
+<< "4. Volver al menú principal\n"
 << "Seleccione una opción: " << std::endl;
 }

@@ -60,13 +60,16 @@ void opcionMenuRecetas(Pantry& miPantry, json& recetas, const std::string& nombr
                 opcionAgregarRecetas(recetas, nombre_archivo);
                 break;
             case 3:
+                opcionVerTodasRecetas(recetas);
+                break;
+            case 4:
                 std::cout << "Volviendo al menú principal" << std::endl;
                 break;
             default:
                 std::cout << "Opción no válida. Inténtalo de nuevo." << std::endl;
         }
 
-    } while (opcion != 3);
+    } while (opcion != 4);
 }
 
 void opcionAgregarIngrediente(Pantry& pantry) {
@@ -189,4 +192,12 @@ void opcionAgregarRecetas(json &recetas, const std::string& nombre_archivo) {
     // agregarMapaAJson(mapaAgregar, recetas);
     guardarRecetas(recetas, nombre_archivo);
 
+}
+
+void opcionVerTodasRecetas(json &recetas) {
+    for (const auto& receta : recetas) {
+        std::cout << receta["nombre"]
+        << receta["ingredientes"]
+        << std::endl;
+    }
 }
