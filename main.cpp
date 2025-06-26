@@ -3,9 +3,10 @@
 #include <string>
 #include "windows.h"
 
-#include "pantry.h"
+#include "classes/pantry.h"
 #include "UI/menu.h"
 #include "handlers/menuHandler.h"
+#include "handlers/dataHandler.h"
 #include "externalLibraries/json.hpp"
 
 // Alias para el tipo JSON para facilitar su uso
@@ -26,6 +27,7 @@ json cargarRecetas(const std::string& nombre_archivo) {
         std::cerr << "Error: No se pudo abrir el archivo de recetas '" << nombre_archivo << "'" << std::endl;
         return nullptr; // Devuelve un json nulo si no se puede abrir
     }
+    archivo_json.close();
     return j;
 }
 
@@ -33,7 +35,8 @@ int main() {
     //SetConsoleOutputCP(1252);
     SetConsoleOutputCP(CP_UTF8);
     Pantry miPantry;
-    const json recetas = cargarRecetas("recetas.json");
+    std::string nombre_archivo = "data/recetas.json";
+    json recetas = cargarRecetas("recetas.json");
 
     if (recetas.is_null() || !recetas.is_array()) {
         std::cerr << "No se pudieron cargar las recetas o el formato es incorrecto. El programa terminará." << std::endl;
@@ -68,12 +71,15 @@ int main() {
                 opcionBuscarRecetas(miPantry, recetas);
                 break;
             case 5:
+                opcionAgregarRecetas(recetas, nombre_archivo);
+                break;
+            case 6:
                 std::cout << "¡Hasta luego! Gracias por usar el recomendador de comidas." << std::endl;
                 break;
             default:
                 std::cout << "Opción no válida. Inténtalo de nuevo." << std::endl;
         }
-    } while (opcion != 5);
+    } while (opcion != 6);
 
     return 0;
 }

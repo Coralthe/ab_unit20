@@ -1,25 +1,12 @@
+#include <variant>
 #include "menuHandler.h"
+#include "dataHandler.h"
 #include <iostream>
-#include <sstream> // Para std::stringstream
 #include <algorithm> // Para std::transform
+#include <map>
 
 
-std::vector<std::string> parsearIngredientesComando(const std::string& linea_comando) {
-    std::vector<std::string> ingredientes;
-    std::stringstream ss(linea_comando);
-    std::string ingrediente;
-    // Leer ingredientes separados por coma, y quitar espacios extra
-    while (std::getline(ss, ingrediente, ',')) {
-        // Eliminar espacios al inicio
-        ingrediente.erase(0, ingrediente.find_first_not_of(" \t\n\r\f\v"));
-        // Eliminar espacios al final
-        ingrediente.erase(ingrediente.find_last_not_of(" \t\n\r\f\v") + 1);
-        if (!ingrediente.empty()) {
-            ingredientes.push_back(ingrediente);
-        }
-    }
-    return ingredientes;
-}
+
 
 void opcionAgregarIngrediente(Pantry& pantry) {
     std::string linea_ingredientes;
@@ -61,7 +48,7 @@ void opcionEliminarIngrediente(Pantry& pantry) {
     pantry.eliminarIngrediente(ingrediente_a_eliminar);
 }
 
-void opcionBuscarRecetas(const Pantry& pantry, const json& recetas) {
+void opcionBuscarRecetas(const Pantry& pantry, json& recetas) {
     std::cout << "\n--- Recetas que puedes preparar ---" << std::endl;
     bool alguna_receta_posible = false;
 
@@ -103,4 +90,53 @@ void opcionBuscarRecetas(const Pantry& pantry, const json& recetas) {
         std::cout << "No puedes preparar ninguna receta completa con los ingredientes actuales." << std::endl;
     }
     std::cout << "---------------------------------" << std::endl;
+}
+
+void opcionAgregarRecetas(json &recetas, std::string& nombre_archivo) {
+    if (0 == 0) {
+        std::cout << "Lo sentimos, esta funcionalidad estará disponible en una siguiente actualización" << std::endl;
+        return;
+    }
+
+    //Inicializamos las variables necesarias
+    std::string nombre_receta;
+    std::string ingredientes_necesarios;
+
+    // Ignora caracteres de salto de linea persistentes
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    // Le pedimos al usuario la data
+    std::cout << "Introduce el nombre de la receta:" << std::endl;
+    std::getline(std::cin, nombre_receta);
+
+    // Validación de entrada
+    if (nombre_receta.empty()) {
+        std::cout << "El nombre de la receta no puede estar vacío. Operación cancelada." << std::endl;
+        return;
+    }
+
+    std::cout << "Introduce los ingredientes que lleva la receta, separados por comas (ej: tomates, cebolla, ajo):" << std::endl;
+    std::getline(std::cin, ingredientes_necesarios);
+
+    // Validación de ingredientes
+    if (ingredientes_necesarios.empty()) {
+        std::cout << "La lista de ingredientes no puede estar vacía. Operación cancelada." << std::endl;
+        return;
+    }
+
+    std::vector<std::string> ingredientes_a_agregar = parsearIngredientesComando(ingredientes_necesarios);
+
+    // std::map<std::string, std::variant<std::string, std::vector<std::string>>> mapaAgregar = {
+    //     {"nombre", nombre_receta},
+    //     {"ingredientes", ingredientes_a_agregar}
+    // };
+    json nueva_receta;
+
+    nueva_receta["nombre"] = nombre_receta;
+    nueva_receta["ingredientes"] = ingredientes_a_agregar;
+    recetas.push_back(nueva_receta);
+
+    // agregarMapaAJson(mapaAgregar, recetas);
+    modificarArchivoRecetas(recetas, nombre_archivo);
+
 }

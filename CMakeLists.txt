@@ -62,7 +62,12 @@ message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 # Directorio de salida
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 
-add_executable(unit20 main.cpp UI/menu.cpp pantry.cpp handlers/menuHandler.cpp)
+add_executable(unit20
+        main.cpp
+        UI/menu.cpp
+        classes/pantry.cpp
+        handlers/menuHandler.cpp
+        handlers/dataHandler.cpp)
 
 configure_file(
         data/recetas.json
