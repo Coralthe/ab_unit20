@@ -14,5 +14,9 @@
   {
     "nombre": "Gazpacho",
     "ingredientes": ["tomate", "pepino", "pimiento", "ajo", "aceite de oliva", "vinagre", "pan"]
+  },
+  {
+    "nombre": "Huevos fritos",
+    "ingredientes": ["huevos", "sal", "aceite"]
   }
 ]

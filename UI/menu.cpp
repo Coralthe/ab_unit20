@@ -105,12 +105,12 @@ void opcionBuscarRecetas(const Pantry& pantry, const json& recetas) {
             std::cout << "-> " << nombre_receta << std::endl;
             alguna_receta_posible = true;
         } else {
-            // TODO: Mostrar qué falta para otras recetas
-            // std::cout << "Para " << nombre_receta << " te faltan: ";
-            // for(size_t i = 0; i < ingredientes_faltantes.size(); ++i) {
-            //     std::cout << ingredientes_faltantes[i] << (i == ingredientes_faltantes.size() - 1 ? "" : ", ");
-            // }
-            // std::cout << std::endl;
+            if (ingredientes_faltantes.size() <= 2) {
+                std::cout << "Para " << nombre_receta << " te faltan: ";
+                for(size_t i = 0; i < ingredientes_faltantes.size(); ++i) {
+                    std::cout << ingredientes_faltantes[i] << (i == ingredientes_faltantes.size() - 1 ? "" : ", ") << std::endl;
+                }
+            }
         }
     }
 
