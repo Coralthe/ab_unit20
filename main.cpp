@@ -17,7 +17,7 @@ int main() {
     //SetConsoleOutputCP(1252);
     SetConsoleOutputCP(CP_UTF8);
     Pantry miPantry;
-    std::string nombre_archivo = "data/recetas.json";
+    std::string nombre_archivo = "recetas.json";
     json recetas = cargarRecetas("recetas.json");
 
     if (recetas.is_null() || !recetas.is_array()) {
