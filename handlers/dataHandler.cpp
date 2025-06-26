@@ -37,3 +37,19 @@ json cargarRecetas(const std::string& nombre_archivo) {
     archivo_json.close();
     return j;
 }
+
+std::vector<std::string> cargarIngredientes(const std::string& nombre_archivo) {
+    std::vector<std::string> ingredientes;
+    std::ifstream archivo_txt(nombre_archivo);
+    std::string linea;
+
+    if (!archivo_txt.is_open()) {
+        std::cerr << "Error al abrir el archivo de ingredientes" << std::endl;
+    }
+    while (std::getline(archivo_txt, linea)) {
+        ingredientes.push_back(linea);
+    }
+
+    archivo_txt.close();
+    return ingredientes;
+}

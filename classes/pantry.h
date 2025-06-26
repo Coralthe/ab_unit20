@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm> // Para std::transform
 #include <iostream>
+#include <fstream>
 
 class Pantry {
 private:
@@ -13,6 +14,7 @@ private:
 public:
     Pantry();
     void agregarIngrediente(const std::string& ingrediente);
+    void cargarIngredientesDesdeArchivo(const std::string& rutaArchivo);
     void eliminarIngrediente(const std::string& ingrediente);
     void mostrarInventario() const;
     const std::vector<std::string>& obtenerIngredientes() const;

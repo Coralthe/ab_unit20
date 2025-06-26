@@ -75,6 +75,11 @@ configure_file(
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/recetas.json
         COPYONLY
 )
+configure_file(
+        data/ingredientes.txt
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/ingredientes.txt
+        COPYONLY
+)
 
 # Instalación
 #install(TARGETS unit20 RUNTIME DESTINATION build)

@@ -13,7 +13,8 @@ void mostrarMenuIngredientes() {
 << "1. Introducir ingredientes\n"
 << "2. Ver inventario\n"
 << "3. Eliminar ingrediente del inventario\n"
-<< "4. Volver al menú principal\n"
+<< "4. Cargar ingredientes preestablecidos\n"
+<< "5. Volver al menú principal\n"
 << "Seleccione una opción: " << std::endl;
 }
 

@@ -8,6 +8,7 @@
 
 void opcionMenuIngredientes(Pantry& miPantry) {
     int opcion;
+    std::string rutaArchivo = "ingredientes.txt";
     do {
         mostrarMenuIngredientes();
         std::cin >> opcion;
@@ -30,13 +31,15 @@ void opcionMenuIngredientes(Pantry& miPantry) {
                 opcionEliminarIngrediente(miPantry);
                 break;
             case 4:
+                miPantry.cargarIngredientesDesdeArchivo(rutaArchivo);
+            case 5:
                 std::cout << "Volviendo al menú principal" << std::endl;
                 break;
             default:
                 std::cout << "Opción no válida. Inténtalo de nuevo." << std::endl;
         }
 
-    } while (opcion != 4);
+    } while (opcion != 5);
 }
 
 void opcionMenuRecetas(Pantry& miPantry, json& recetas, const std::string& nombre_archivo) {

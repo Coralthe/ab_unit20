@@ -1,4 +1,5 @@
 #include "pantry.h"
+#include "../handlers/dataHandler.h"
 
 Pantry::Pantry() {}
 
@@ -41,6 +42,21 @@ void Pantry::eliminarIngrediente(const std::string& ingrediente) {
         std::cout << "Ingrediente '" << ingrediente << "' no encontrado en el inventario." << std::endl;
     }
 }
+
+void Pantry::cargarIngredientesDesdeArchivo(const std::string& rutaArchivo) {
+    std::vector<std::string> nuevosIngredientes = cargarIngredientes(rutaArchivo);
+
+    for (std::string& ingrediente : nuevosIngredientes) {
+        ingrediente.erase(0, ingrediente.find_first_not_of(" \t\n\r\f\v"));
+        // Eliminar espacios al final
+        ingrediente.erase(ingrediente.find_last_not_of(" \t\n\r\f\v") + 1);
+        if (!ingrediente.empty()) {
+            agregarIngrediente(ingrediente);
+        }
+
+    }
+}
+
 
 void Pantry::mostrarInventario() const {
     if (ingredientes_disponibles.empty()) {
