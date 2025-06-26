@@ -19,7 +19,7 @@ std::vector<std::string> parsearIngredientesComando(const std::string& linea_com
     return ingredientes;
 }
 
-int modificarArchivoRecetas(const json& recetas, std::string& nombre_archivo) {
+int guardarRecetas(const json& recetas, const std::string& nombre_archivo) {
     // Definir ruta del archivo
     // const std::string nombreArchivo = "../data/recetas.json";
 
@@ -34,4 +34,22 @@ int modificarArchivoRecetas(const json& recetas, std::string& nombre_archivo) {
     archivo << recetas.dump(4);
     archivo.close();
     return 1;
+}
+
+json cargarRecetas(const std::string& nombre_archivo) {
+    std::ifstream archivo_json(nombre_archivo);
+    json j;
+    if (archivo_json.is_open()) {
+        try {
+            archivo_json >> j;
+        } catch (json::parse_error& e) {
+            std::cerr << "Error al parsear el archivo JSON: " << e.what() << std::endl;
+            return nullptr; // Devuelve un json nulo en caso de error
+        }
+    } else {
+        std::cerr << "Error: No se pudo abrir el archivo de recetas '" << nombre_archivo << "'" << std::endl;
+        return nullptr; // Devuelve un json nulo si no se puede abrir
+    }
+    archivo_json.close();
+    return j;
 }

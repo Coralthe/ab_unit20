@@ -137,6 +137,6 @@ void opcionAgregarRecetas(json &recetas, std::string& nombre_archivo) {
     recetas.push_back(nueva_receta);
 
     // agregarMapaAJson(mapaAgregar, recetas);
-    modificarArchivoRecetas(recetas, nombre_archivo);
+    guardarRecetas(recetas, nombre_archivo);
 
 }
